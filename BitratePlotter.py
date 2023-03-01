@@ -26,6 +26,7 @@ plt.rcParams['figure.dpi'] = dpi
 plt.rcParams['savefig.dpi'] = 300
 plt.rcParams['figure.figsize'] = [8, 4]
 plt.rcParams['figure.constrained_layout.use'] = True
+plt.rcParams['font.sans-serif'] = ["Microsoft Yahei"]
 
 
 def calc_number_of_frames(file_path, stream_specifier, file_duration):
