@@ -22,6 +22,11 @@ ctypes.windll.user32.SetProcessDPIAware()
 scale = ctypes.windll.gdi32.GetDeviceCaps(ctypes.windll.user32.GetDC(0), LOGPIXELSX)/96
 dpi = 163/scale
 
+plt.rcParams['figure.dpi'] = dpi
+plt.rcParams['savefig.dpi'] = 300
+plt.rcParams['figure.figsize'] = [8, 4]
+plt.rcParams['figure.constrained_layout.use'] = True
+
 
 def calc_number_of_frames(file_path, stream_specifier, file_duration):
     cmd = [
@@ -219,8 +224,10 @@ if __name__ == "__main__":
     if args.file_path is None:
         rt = tk.Tk()
         rt.withdraw()
-        file_path = filedlg.askopenfilename(title="选择视频文件",
-                                        filetypes=[("MPEG-4", '*.mp4;*.m4v'), ("All Files", '*')],
+        file_path = filedlg.askopenfilename(title="Choose Video File",
+                                        filetypes=[("MPEG-4", '*.mp4;*.m4v'),
+                                                   ("Matroska", '*.mkv'),
+                                                   ("All Files", '*')],
                                         initialdir="./")
         rt.destroy()
         gui = True
@@ -379,7 +386,7 @@ if __name__ == "__main__":
             # )
 
             print("Creating the graph...")
-            fig, ax = plt.subplots(figsize=(20/2.54, 4), layout='constrained', dpi=dpi)
+            fig, ax = plt.subplots()
             ax.set_title(f"{filename}\nAverage/Max Bitrate: {ave_bitrate}/{max_bitrate} Mbps")
             ax.set_xlabel("Time (s)")
             ax.set_xlim(min(time_axis), max(time_axis))
