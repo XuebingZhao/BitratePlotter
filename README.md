@@ -5,7 +5,7 @@ Mostly copied from [CrypticSignal/bitrate-plotter](https://github.com/CrypticSig
 # Mods
 - Add fucntion to select file from gui, you can just use `python BitratePlotter.py` to start it
 - Modify plot style
-
+![example graph](https://github.com/XuebingZhao/BitratePlotter/blob/main/Figure_1.png)
 - Merge 3 .py files to 1 .py file
 
 # Requirements 
